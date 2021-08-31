@@ -11,6 +11,23 @@ class User extends CI_Controller {
 		if ($this->session->userdata('role_id')!=1 && $this->session->userdata('role_id')!=2) {
         	redirect('home');
         }
+        $waktuNow = date('Y-m-d');
+        $campaigndeadline = $this->db->get_where('campaign',['deadline' => $waktuNow])->result_array();
+
+        foreach ($campaigndeadline as $cdt) {
+        	$this->db->set('status', 'Selesai');
+        	$this->db->where('id_campaign', $cdt['id_campaign']);
+        	$this->db->update('campaign');
+        }
+        $campaigndonasi = $this->db->get('campaign')->result_array();
+
+        foreach ($campaigndonasi as $cdo) {
+        	if ($cdo['donasi_terkumpul'] >= $cdo['donasi_total']) {
+	        	$this->db->set('status', 'Selesai');
+	        	$this->db->where('id_campaign', $cdo['id_campaign']);
+	        	$this->db->update('campaign');
+        	}
+        }
 	}
 
 	public function index(){
@@ -248,7 +265,7 @@ class User extends CI_Controller {
 			'required' => 'Tolong isi durasi!'
 		]);
 		
-		$config['base_url']= 'http://localhost/fundrise/user/buatCampaign';
+		$config['base_url']= 'http://localhost/fundr4ise/user/buatCampaign';
 		$config['total_rows']=$this->Model->hitungBuatCampaign($id_user);
 		$config['per_page']=5;
 
@@ -600,7 +617,7 @@ class User extends CI_Controller {
 
 			$config['base_url']= 'http://localhost/fundrise/user/campaign/selesai';
 			$config['total_rows']=$this->db->query($dilaksanakan)->num_rows();
-			$config['per_page']=5;
+			$config['per_page']=4;
 
 			$config['full_tag_open']='<nav aria-label="Page navigation example"> <ul class="pagination  justify-content-center">';
 			$config['full_tag_close']='</ul></nav>';
@@ -632,7 +649,7 @@ class User extends CI_Controller {
 			$this->pagination->initialize($config);
 
 
-			$data['start']=$this->uri->segment(4);
+			$data['start']=$this->uri->segment(5);
 			$this->db->order_by('id_campaign','DESC');
 			$data['campaign']=$this->db->get_where('campaign',['status'=>'Selesai', 'id_user'=>$id_user],$config['per_page'],$data['start'])->result_array();
 

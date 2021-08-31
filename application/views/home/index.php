@@ -46,20 +46,21 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+<div style="min-height: calc(100vh - 40px);">
 <div class="container my-3" style=" background-color: #dbf8f6; border-radius: 5px;
-  padding: 10px; min-height: calc(100vh - 40px);">
+  padding: 10px;">
   <div class="session1 my-3">
     <h2 class="text-center" style="font-size: 3vw">Kamu mau donasi yang mana?</h2>
     <div class="row no-gutters mt-5 mb-3">
       <div class="col-3 col-md-2 offset-2 offset-md-3">
         <a href="<?=base_url('category/pembangunan');?>" class="text-decoration-none">
-          <img src="<?=base_url('assets/image/pembangunan.jpeg');?>" class="gambar-kategori-home img-fluid rounded" style="max-height: 400px">
+          <img src="<?=base_url('assets/image/pembangunan.png');?>" class="gambar-kategori-home img-fluid rounded" style="max-height: 400px">
           <p class="text-center" style="color:#5d6056; font-weight: bold; font-size: 16px;">Pembangunan</p>
         </a>
       </div>
       <div class="col-3 col-md-2 offset-2 offset-md-2">
         <a href="<?=base_url('category/renovasi');?>" class="text-decoration-none">
-          <img src="<?=base_url('assets/image/renovasi.jpeg');?>" class="gambar-kategori-home img-fluid rounded" style="max-height: 400px;">
+          <img src="<?=base_url('assets/image/renovasi.png');?>" class="gambar-kategori-home img-fluid rounded" style="max-height: 400px;">
           <p class="text-center" style="color:#5d6056; font-weight: bold; font-size: 16px">Renovasi</p>
         </a>
       </div>
@@ -167,6 +168,8 @@
         </div>
       </div>
   </div>
+</div>
+  
 </div>
 
 <!-- Modal -->

@@ -16,11 +16,21 @@ class Admin extends CI_Controller {
         }
 
         $waktuNow = date('Y-m-d');
-        $donatur = $this->db->get_where('campaign',['deadline' => $waktuNow])->result_array();
-        foreach ($donatur as $dt) {
+        $campaigndeadline = $this->db->get_where('campaign',['deadline' => $waktuNow])->result_array();
+
+        foreach ($campaigndeadline as $cdt) {
         	$this->db->set('status', 'Selesai');
-        	$this->db->where('id_campaign', $dt['id_campaign']);
+        	$this->db->where('id_campaign', $cdt['id_campaign']);
         	$this->db->update('campaign');
+        }
+        $campaigndonasi = $this->db->get('campaign')->result_array();
+
+        foreach ($campaigndonasi as $cdo) {
+        	if ($cdo['donasi_terkumpul'] >= $cdo['donasi_total']) {
+	        	$this->db->set('status', 'Selesai');
+	        	$this->db->where('id_campaign', $cdo['id_campaign']);
+	        	$this->db->update('campaign');
+        	}
         }
 	}
 
@@ -60,7 +70,7 @@ class Admin extends CI_Controller {
 
 		$this->load->view('templates/dashboardhead');
 		$this->load->view('templates/sidebaradmin',$data);
-		$this->load->view('admin/detailPengajuan',$data);
+		$this->load->view('admin/detailpengajuan',$data);
 		$this->load->view('templates/dashboardfoot');
 	}
 
@@ -243,7 +253,7 @@ class Admin extends CI_Controller {
 			$this->pagination->initialize($config);
 
 
-			$data['start']=$this->uri->segment(3);
+			$data['start']=$this->uri->segment(4);
 			$this->db->order_by('id_campaign','DESC');
 			$data['campaign']=$this->db->get_where('campaign',['status'=>'Selesai'],$config['per_page'],$data['start'])->result_array();
 

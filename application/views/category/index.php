@@ -1,11 +1,11 @@
-<div class="jumbotron jumbotron-fluid" style="background-image: url('<?=base_url('assets/image/kategori.jpg');?>'); background-size: cover; min-height: calc(100vh - 40px);" >
+<div class="jumbotron jumbotron-fluid" style="background-image: url('<?=base_url('assets/image/kategori.jpg');?>'); background-size: cover; " >
   <div class="container" style="color: #e7f6e8">
     <h1 class="display-4" >Mari Berbagi</h1>
     <p class="lead">Kamu bisa memilih berbagai campaign untuk berdonasi dan membantu program-program kemanusiaan yang ada disini.</p>
   </div>
 </div>
 
-<div class="container my-5">
+<div class="container my-5" style="min-height: calc(100vh - 40px);">
 	<h4 class="col-10 col-md-3">Campaign</h4>
 	<hr class="mb-4">
 		<div class="mb-4" >

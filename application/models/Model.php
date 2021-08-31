@@ -87,6 +87,3 @@ public function getDataBuatCampaignById($id){
 		return $this->db->query($query)->num_rows();
 	}
 }
-
-// $query = "SELECT * FROM `pengajuan` WHERE `id_pengajuan` = $id LIMIT $limit, $start";
-// 		return $this->db->query($query)->result_array();

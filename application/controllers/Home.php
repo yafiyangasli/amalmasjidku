@@ -12,12 +12,21 @@ class Home extends CI_Controller {
         require APPPATH.'libraries/phpmailer/src/PHPMailer.php';
         require APPPATH.'libraries/phpmailer/src/SMTP.php';
         $waktuNow = date('Y-m-d');
-        $donatur = $this->db->get_where('campaign',['deadline' => $waktuNow])->result_array();
+        $campaigndeadline = $this->db->get_where('campaign',['deadline' => $waktuNow])->result_array();
 
-        foreach ($donatur as $dt) {
+        foreach ($campaigndeadline as $cdt) {
         	$this->db->set('status', 'Selesai');
-        	$this->db->where('id_campaign', $dt['id_campaign']);
+        	$this->db->where('id_campaign', $cdt['id_campaign']);
         	$this->db->update('campaign');
+        }
+        $campaigndonasi = $this->db->get('campaign')->result_array();
+
+        foreach ($campaigndonasi as $cdo) {
+        	if ($cdo['donasi_terkumpul'] >= $cdo['donasi_total']) {
+	        	$this->db->set('status', 'Selesai');
+	        	$this->db->where('id_campaign', $cdo['id_campaign']);
+	        	$this->db->update('campaign');
+        	}
         }
 	}
 

@@ -3,7 +3,7 @@
     <div class="text">Dashboard</div>
     <div class="container-fluid">
     <div class="row no-gutters">
-      <div class="col-10 col-md-2 offset-1 offset-md-6 mt-3" style="background-color: white; border-radius: 5px; padding: 8px; border: 1px solid grey;">
+      <div class="col-10 col-md-2 offset-1 offset-md-3 mt-3" style="background-color: white; border-radius: 5px; padding: 8px; border: 1px solid grey;">
         <div class="row no-gutters">
           <div class="col-7 col-md-6" >
             <h3><strong><?=$totaldonasi;?></strong></h3>

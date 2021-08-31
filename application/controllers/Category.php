@@ -13,7 +13,7 @@ class Category extends CI_Controller {
 		if ($this->session->userdata('search')==NULL) {
 			$config['base_url']= 'http://localhost/fundrise/category/index';
 			$config['total_rows']=$this->Model->hitungCampaign();
-			$config['per_page']=9;
+			$config['per_page']=12;
 
 			$config['full_tag_open']='<nav aria-label="Page navigation example"> <ul class="pagination  justify-content-center">';
 			$config['full_tag_close']='</ul></nav>';
@@ -45,7 +45,7 @@ class Category extends CI_Controller {
 			$this->pagination->initialize($config);
 
 
-			$data['start']=$this->uri->segment(2);
+			$data['start']=$this->uri->segment(3);
 			if ($this->session->userdata('urutkan') == 'terlama') {
 				$this->db->order_by('id_campaign','ASC');
 				$data['tampilkan'] = 'Menampilkan hasil dari semua dengan urutan terlama';
