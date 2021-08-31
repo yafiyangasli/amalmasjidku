@@ -1,0 +1,65 @@
+body{
+	color: #2d2e2a;
+}
+
+img.gambar-kategori-home:hover {
+  position: relative;
+  transform: scale(1.05);
+  transition: 1s;
+}
+
+.wrapper{
+  width: 500px;
+  margin: 50px auto 0;
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+}
+
+.wrapper .title{
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 25px;
+  text-align: center;
+  line-height: 25px;
+}
+
+.wrapper  ul{
+    height: 70px;
+    overflow: hidden;
+    padding-left: 15px;
+}
+
+.wrapper  ul.active{
+  height: auto;
+}
+
+.wrapper  ul li{
+  margin-bottom: 5px;
+  list-style: none;
+  position: relative;
+}
+
+.wrapper  ul li:before{
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: -12px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #bfbfbf;
+}
+ 
+.wrapper .sholes_btn{
+  margin-top: 15px;
+  font-weight: 700;
+  color: #ff406c;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.wrapper .sholes_btn.active .fas{
+  transform: rotate(180deg);
+}

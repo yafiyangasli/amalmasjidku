@@ -1,0 +1,45 @@
+
+        
+<style type="text/css">
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+*{
+  font-family: "Poppins" , sans-serif;
+}
+    </style>
+    <div style=" background-color: white; border-radius: 5px; padding: 10px;">
+		<h2>'.$subject.'</h2><img href="https://images.app.goo.gl/q2XFij85R965R6oq8" style="max-width: 90%; height: auto; border-radius: 5px; margin-left: auto; margin-right: auto; display: block;"><div style="max-width: 90%; height: auto; margin-left: auto; margin-right: auto; margin-top: 5%; display: block; font-size: 12.5px;">'.$paragraf.'</div></div>
+
+
+$subject=$this->input->post('subjek');
+		$nama_image = $_FILES['gambar']['name'];
+		$upload_image = str_replace(" ", "_", $nama_image);
+		$total = count($this->input->post('teks'));
+		$teks = $this->input->post('teks');
+		$paragraf ='';
+		for ($i=0; $i < $total; $i++) {
+			$paragraf .= "<p>".$teks[$i]."</p>";
+		}
+
+		$response = false;
+        $mail = new PHPMailer();
+        // SMTP configuration
+        // SMTP configuration
+
+        $mail->isSMTP(); 
+        $mail->Host = "tls://smtp.gmail.com"; //sesuaikan sesuai nama domain hosting/server yang digunakan
+        $mail->SMTPAuth = true;
+        $mail->Username = 'takiyagenji0721@gmail.com'; // user email
+        $mail->Password = 'genjic00l'; // password email
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 587;
+
+		$mail->From = "takiyagenji0721@gmail.com"; //email pengirim
+		$mail->FromName = "MABAAR"; //nama pengirim
+		$mail->addAddress($email);
+		$mail->Subject = $subject;
+		$mail->isHTML(true);
+		$mailContent = 
+		'tod';
+		$mail->Body = $mailContent;
+
+		$mail->send();
